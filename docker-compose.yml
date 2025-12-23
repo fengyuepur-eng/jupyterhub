@@ -9,8 +9,10 @@ services:
       - ./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py
       - ./pre_spawn.py:/srv/jupyterhub/pre_spawn.py
       - jupyterhub-data:/srv/jupyterhub
+      - jupyterhub-home:/home   # ⭐ 關鍵這行
     command: jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
     restart: always
 
 volumes:
   jupyterhub-data:
+  jupyterhub-home:
