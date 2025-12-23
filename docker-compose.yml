@@ -1,0 +1,15 @@
+services:
+  jupyterhub:
+    build: .
+    image: my-jupyterhub
+    container_name: jupyterhub
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py
+      - jupyterhub-data:/srv/jupyterhub
+    command: jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
+    restart: always
+
+volumes:
+  jupyterhub-data:
