@@ -1,7 +1,6 @@
 FROM jupyterhub/jupyterhub:latest
 
-# 安裝 authenticator
 RUN pip install --no-cache-dir notebook jupyterhub-nativeauthenticator
 
-# 建立一個預設 Linux 使用者（給 admin 用）
-RUN useradd -m -s /bin/bash admin
+# useradd 需要這些工具（通常已存在，但保險）
+RUN apt-get update && apt-get install -y passwd && rm -rf /var/lib/apt/lists/*

@@ -7,6 +7,7 @@ services:
       - "8000:8000"
     volumes:
       - ./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py
+      - ./pre_spawn.py:/srv/jupyterhub/pre_spawn.py
       - jupyterhub-data:/srv/jupyterhub
     command: jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
     restart: always
